@@ -27,6 +27,10 @@ export const App = () => {
     const handleDeleteTask = (taskId: string) => {
         setTasks(tasks.filter(i => i.id !== taskId))
     }
+    const handleChangeTaskTitle = (taskId: string, title: string) => {
+        setTasks(tasks.map((i) => i.id === taskId ? {...i, title} : i))
+    }
+
     return <div className={`container`}>
         <AddItemForm
             onSetAddTask={handleAddTask}
@@ -34,6 +38,7 @@ export const App = () => {
         <Tasks
             state={tasks}
             onSetDeleteTask={handleDeleteTask}
+            onSetChangeTaskTitle={handleChangeTaskTitle}
         />
     </div>
 }

@@ -4,11 +4,12 @@ import {Task} from "./Task";
 type PropsType = {
     state: StateType[]
     onSetDeleteTask: (taskId: string) => void
+    onSetChangeTaskTitle: (taskId: string, newTitle: string) => void
 }
 export const Tasks = ({
                           state,
-                          onSetDeleteTask
-
+                          onSetDeleteTask,
+                          onSetChangeTaskTitle,
                       }: PropsType) => {
     return <ul>
         {
@@ -19,6 +20,7 @@ export const Tasks = ({
                         taskTitle={i.title}
                         taskId={i.id}
                         onSetDeleteTask={onSetDeleteTask}
+                        onSetChangeTaskTitle={onSetChangeTaskTitle}
                     />
             )
         }
