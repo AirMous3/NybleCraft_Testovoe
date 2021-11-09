@@ -3,6 +3,7 @@ import './App.css';
 import {v1} from "uuid";
 import {AddItemForm} from "./components/AddItemForm/AddItemForm";
 import {Tasks} from "./components/Tasks/Tasks";
+import {Tags} from "./components/HashTags/Tags";
 
 
 export type StateType = {
@@ -21,6 +22,8 @@ export const App = () => {
             {title: 'learn English', id: v1(), tag: '#all'}
         ]
     )
+    const [tags, setTags] = useState<string[]>([])
+
     const handleAddTask = (title: string) => {
         setTasks([{title, id: v1(), tag: '#all'}, ...tasks])
     }
@@ -30,15 +33,29 @@ export const App = () => {
     const handleChangeTaskTitle = (taskId: string, title: string) => {
         setTasks(tasks.map((i) => i.id === taskId ? {...i, title} : i))
     }
+    const handleAddTag = (tag: string[]) => {
+        setTags([...tags, ...tag])
+    }
+    const handleAddTagTask = (taskId: string, tag: string) => {
+        setTasks(tasks.map((i) => i.id === taskId ? {...i, tag} : i))
+    }
 
     return <div className={`container`}>
         <AddItemForm
-            onSetAddTask={handleAddTask}
+            onAddTask={handleAddTask}
         />
+
+        <Tags
+            tags={tags}
+        />
+
         <Tasks
             state={tasks}
-            onSetDeleteTask={handleDeleteTask}
-            onSetChangeTaskTitle={handleChangeTaskTitle}
+            tags={tags}
+            onDeleteTask={handleDeleteTask}
+            onChangeTaskTitle={handleChangeTaskTitle}
+            onAddTagTask={handleAddTagTask}
+            onAddTag={handleAddTag}
         />
     </div>
 }

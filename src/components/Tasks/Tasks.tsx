@@ -3,13 +3,19 @@ import {Task} from "./Task";
 
 type PropsType = {
     state: StateType[]
-    onSetDeleteTask: (taskId: string) => void
-    onSetChangeTaskTitle: (taskId: string, newTitle: string) => void
+    onDeleteTask: (taskId: string) => void
+    onChangeTaskTitle: (taskId: string, newTitle: string) => void
+    onAddTagTask: (taskId: string, tag: string) => void
+    onAddTag: (tag: string[]) => void
+    tags: string[]
 }
 export const Tasks = ({
                           state,
-                          onSetDeleteTask,
-                          onSetChangeTaskTitle,
+                          onDeleteTask,
+                          onChangeTaskTitle,
+                          onAddTagTask,
+                          onAddTag,
+                          tags,
                       }: PropsType) => {
     return <ul>
         {
@@ -17,13 +23,15 @@ export const Tasks = ({
                 (i) =>
                     <Task
                         key={i.id}
+                        tags={tags}
                         taskTitle={i.title}
                         taskId={i.id}
-                        onSetDeleteTask={onSetDeleteTask}
-                        onSetChangeTaskTitle={onSetChangeTaskTitle}
+                        onDeleteTask={onDeleteTask}
+                        onChangeTaskTitle={onChangeTaskTitle}
+                        onAddTagTask={onAddTagTask}
+                        onAddTag={onAddTag}
                     />
             )
         }
     </ul>
-
 }

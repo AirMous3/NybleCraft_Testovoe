@@ -1,15 +1,15 @@
 import {ChangeEvent, useState} from "react";
 
 type PropsType = {
-    onSetAddTask: (title: string) => void
+    onAddTask: (title: string) => void
 }
 
-export const AddItemForm = ({onSetAddTask}: PropsType) => {
+export const AddItemForm = ({onAddTask}: PropsType) => {
 
     const [title, setTitle] = useState<string>('')
 
     const handleAddTask = () => {
-        onSetAddTask(title)
+        onAddTask(title)
         setTitle('')
     }
     const handleSetTitle = (e: ChangeEvent<HTMLInputElement>) => {
