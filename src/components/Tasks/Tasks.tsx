@@ -1,8 +1,8 @@
 import {StateType} from "../../App";
-import {Task} from "./Task";
+import {EditableSpan} from "./EditableSpan";
 
 type PropsType = {
-    state: StateType[]
+    tasks: StateType[]
     onDeleteTask: (taskId: string) => void
     onChangeTaskTitle: (taskId: string, newTitle: string) => void
     onAddTagTask: (taskId: string, tag: string) => void
@@ -10,27 +10,30 @@ type PropsType = {
     tags: string[]
 }
 export const Tasks = ({
-                          state,
+                          tasks,
                           onDeleteTask,
                           onChangeTaskTitle,
                           onAddTagTask,
                           onAddTag,
                           tags,
                       }: PropsType) => {
+
     return <ul>
         {
-            state.map(
+            tasks.map(
                 (i) =>
-                    <Task
-                        key={i.id}
-                        tags={tags}
-                        taskTitle={i.title}
-                        taskId={i.id}
-                        onDeleteTask={onDeleteTask}
-                        onChangeTaskTitle={onChangeTaskTitle}
-                        onAddTagTask={onAddTagTask}
-                        onAddTag={onAddTag}
-                    />
+                    <li style={{display: 'flex', paddingTop: '10px'}}>
+                        <EditableSpan
+                            title={i.title}
+                            tags={tags}
+                            taskId={i.id}
+                            onChangeTaskTitle={onChangeTaskTitle}
+                            onAddTagTask={onAddTagTask}
+                            onAddTag={onAddTag}
+
+                        />
+                        <button onClick={() => onDeleteTask(i.id)}> x</button>
+                    </li>
             )
         }
     </ul>

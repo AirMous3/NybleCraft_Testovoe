@@ -66,7 +66,7 @@ export const App = () => {
         />
 
         <Tasks
-            state={filteredTasks}
+            tasks={filteredTasks}
             tags={tags}
             onDeleteTask={handleDeleteTask}
             onChangeTaskTitle={handleChangeTaskTitle}
