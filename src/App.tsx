@@ -23,6 +23,7 @@ export const App = () => {
         ]
     )
     const [tags, setTags] = useState<string[]>([])
+    const [filter, setFilter] = useState('#all')
 
     const handleAddTask = (title: string) => {
         setTasks([{title, id: v1(), tag: '#all'}, ...tasks])
@@ -42,6 +43,15 @@ export const App = () => {
     const handleTagDelete = (tag: string) => {
         setTags(tags.filter(i => i !== tag))
     }
+    const handleChangeFilter = (tag: string) => {
+        setFilter(tag)
+    }
+    let filteredTasks = tasks.filter((i) => i.tag === filter)
+
+    if (filter === '#all') {
+        filteredTasks = tasks
+    }
+
 
     return <div className={`container`}>
         <AddItemForm
@@ -51,10 +61,11 @@ export const App = () => {
         <Tags
             tags={tags}
             onTagDelete={handleTagDelete}
+            onTagFilter={handleChangeFilter}
         />
 
         <Tasks
-            state={tasks}
+            state={filteredTasks}
             tags={tags}
             onDeleteTask={handleDeleteTask}
             onChangeTaskTitle={handleChangeTaskTitle}
