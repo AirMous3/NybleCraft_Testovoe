@@ -25,6 +25,7 @@ export const App = () => {
     const [tags, setTags] = useState<string[]>([])
     const [filter, setFilter] = useState('#all')
 
+
     const handleAddTask = (title: string) => {
         setTasks([{title, id: v1(), tag: '#all'}, ...tasks])
     }

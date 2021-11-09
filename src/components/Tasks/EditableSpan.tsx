@@ -20,10 +20,9 @@ export const EditableSpan = ({
                              }: PropsType) => {
 
     const [editMode, setEditMode] = useState<boolean>(false)
-    const [newTitle, setNewTitle] = useState<string>(title)
 
     const handleTaskTitleChange = (e: ChangeEvent<HTMLInputElement>) => {
-        setNewTitle(e.currentTarget.value)
+        onChangeTaskTitle(taskId,e.currentTarget.value)
     }
     const handleEditModeChange = () => {
         setEditMode(true)
@@ -31,8 +30,7 @@ export const EditableSpan = ({
 
     const disableEditMode = () => {
         setEditMode(false)
-        onChangeTaskTitle(taskId, newTitle)
-        let tag = newTitle.split(' ').filter(text => text.startsWith('#'))
+        let tag = title.split(' ').filter(text => text.startsWith('#'))
         if (tag) {
             if (tags.includes(tag[0])) {
                 onAddTagTask(taskId, tag[0])
@@ -54,7 +52,7 @@ export const EditableSpan = ({
         {
             editMode
                 ? <input
-                    defaultValue={newTitle}
+                    value={title}
                     autoFocus={true}
                     onBlur={disableEditMode}
                     type='text'
@@ -62,7 +60,7 @@ export const EditableSpan = ({
                     onKeyPress={onEnterKeyPress}
                 />
 
-                : <span onDoubleClick={handleEditModeChange}>{newTitle}</span>
+                : <span onDoubleClick={handleEditModeChange}>{title}</span>
         }
     </div>
 }
