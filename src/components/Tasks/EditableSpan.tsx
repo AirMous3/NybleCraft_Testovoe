@@ -1,28 +1,26 @@
-import {ChangeEvent, useState} from "react";
+import {ChangeEvent, useEffect, useState} from "react";
 
 type PropsType = {
     title: string
     taskId: string
-    onChangeTaskTitle: (taskId: string, newTitle: string) => void
-    onAddTagTask: (taskId: string, tag: string) => void
-    onAddTag: (tag: string[]) => void
-    tags: string[]
+    onChange: (taskId: string, newTitle: string) => void
 
 }
 export const EditableSpan = ({
                                  title,
-                                 onChangeTaskTitle,
+                                 onChange,
                                  taskId,
-                                 onAddTagTask,
-                                 onAddTag,
-                                 tags
 
                              }: PropsType) => {
 
     const [editMode, setEditMode] = useState<boolean>(false)
+    const [text, setText] = useState(title)
+    useEffect(() => {
+        setText(title)
+    }, [title])
 
     const handleTaskTitleChange = (e: ChangeEvent<HTMLInputElement>) => {
-        onChangeTaskTitle(taskId,e.currentTarget.value)
+        setText(e.currentTarget.value)
     }
     const handleEditModeChange = () => {
         setEditMode(true)
@@ -30,16 +28,7 @@ export const EditableSpan = ({
 
     const disableEditMode = () => {
         setEditMode(false)
-        let tag = title.split(' ').filter(text => text.startsWith('#'))
-        if (tag) {
-            if (tags.includes(tag[0])) {
-                onAddTagTask(taskId, tag[0])
-                return
-            } else {
-                onAddTagTask(taskId, tag[0])
-                onAddTag(tag)
-            }
-        }
+        onChange(taskId, text)
     }
 
     const onEnterKeyPress = (e: React.KeyboardEvent<HTMLInputElement>) => {
@@ -52,7 +41,7 @@ export const EditableSpan = ({
         {
             editMode
                 ? <input
-                    value={title}
+                    value={text}
                     autoFocus={true}
                     onBlur={disableEditMode}
                     type='text'
@@ -60,7 +49,7 @@ export const EditableSpan = ({
                     onKeyPress={onEnterKeyPress}
                 />
 
-                : <span onDoubleClick={handleEditModeChange}>{title}</span>
+                : <span onDoubleClick={handleEditModeChange}>{text}</span>
         }
     </div>
 }

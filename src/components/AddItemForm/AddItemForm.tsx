@@ -17,10 +17,12 @@ export const AddItemForm = ({onAddTask}: PropsType) => {
     }
 
     return <div>
-        <input placeholder='Добавьте Заметку'
-               value={title}
-               onChange={handleSetTitle}
-               type='text'/>
+        <input
+            placeholder='Добавьте Заметку'
+            value={title}
+            onChange={handleSetTitle}
+            type='text'
+        />
 
         <button onClick={handleAddTask}>addTask</button>
     </div>

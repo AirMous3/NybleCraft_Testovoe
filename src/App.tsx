@@ -9,7 +9,6 @@ import {Tags} from "./components/HashTags/Tags";
 export type StateType = {
     title: string,
     id: string,
-    tag: string
 }
 
 
@@ -18,16 +17,16 @@ export const App = () => {
     const [tasks, setTasks] = useState<StateType[]>
     (
         [
-            {title: 'magazin', id: v1(), tag: '#all'},
-            {title: 'learn English', id: v1(), tag: '#all'}
+            {title: 'magazin', id: v1()},
+            {title: 'learn English', id: v1()}
         ]
     )
-    const [tags, setTags] = useState<string[]>([])
-    const [filter, setFilter] = useState('#all')
+
+    const [filter, setFilter] = useState('')
 
 
     const handleAddTask = (title: string) => {
-        setTasks([{title, id: v1(), tag: '#all'}, ...tasks])
+        setTasks([{title, id: v1()}, ...tasks])
     }
     const handleDeleteTask = (taskId: string) => {
         setTasks(tasks.filter(i => i.id !== taskId))
@@ -35,23 +34,26 @@ export const App = () => {
     const handleChangeTaskTitle = (taskId: string, title: string) => {
         setTasks(tasks.map((i) => i.id === taskId ? {...i, title} : i))
     }
-    const handleAddTag = (tag: string[]) => {
-        setTags([...tags, ...tag])
-    }
-    const handleAddTagTask = (taskId: string, tag: string) => {
-        setTasks(tasks.map((i) => i.id === taskId ? {...i, tag} : i))
-    }
+
     const handleTagDelete = (tag: string) => {
-        setTags(tags.filter(i => i !== tag))
+        const newTasks = tasks.map((t) => {
+            t.title = t.title.replace(tag, '')
+            return t
+        })
+        setTasks(newTasks)
     }
     const handleChangeFilter = (tag: string) => {
         setFilter(tag)
     }
-    let filteredTasks = tasks.filter((i) => i.tag === filter)
+    let filteredTasks = tasks.filter((i) => i.title.includes(filter))
 
-    if (filter === '#all') {
+    if (filter === '') {
         filteredTasks = tasks
     }
+    /* Разделяем название тасок по пробелу, фильтруем по наличию решетки,
+     удаляем дубликаты с помощью Set ,*/
+    const tags = Array.from(new Set(tasks.map((i) =>
+        i.title.split(' ').filter(text => text[0] === '#')).flat()))
 
 
     return <div className={`container`}>
@@ -67,11 +69,8 @@ export const App = () => {
 
         <Tasks
             tasks={filteredTasks}
-            tags={tags}
             onDeleteTask={handleDeleteTask}
             onChangeTaskTitle={handleChangeTaskTitle}
-            onAddTagTask={handleAddTagTask}
-            onAddTag={handleAddTag}
         />
     </div>
 }

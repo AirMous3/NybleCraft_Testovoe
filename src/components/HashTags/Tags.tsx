@@ -13,7 +13,7 @@ export const Tags = ({
 
                      }: PropsType) =>
     <div style={{display: 'flex', flexWrap: "wrap"}}>
-        <div onClick={() => onTagFilter('#all')} style={{paddingTop: '10px'}}>#all</div>
+        <div onClick={() => onTagFilter('')} style={{paddingTop: '10px'}}>#all</div>
         {tags.map(
             (i, index) =>
                 <Tag
