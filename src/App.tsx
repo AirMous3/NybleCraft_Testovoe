@@ -1,4 +1,4 @@
-import React, {useState} from 'react';
+import React, {useEffect, useState} from 'react';
 import './App.css';
 import {v1} from "uuid";
 import {AddItemForm} from "./components/AddItemForm/AddItemForm";
@@ -14,16 +14,12 @@ export type StateType = {
 
 export const App = () => {
 
-    const [tasks, setTasks] = useState<StateType[]>
-    (
-        [
-            {title: 'magazin', id: v1()},
-            {title: 'learn English', id: v1()}
-        ]
-    )
-
+    const [tasks, setTasks] = useState<StateType[]>(JSON.parse(localStorage.getItem('tasks')!))
     const [filter, setFilter] = useState('')
 
+    useEffect(() => {
+        localStorage.setItem('tasks', JSON.stringify(tasks))
+    }, [tasks])
 
     const handleAddTask = (title: string) => {
         setTasks([{title, id: v1()}, ...tasks])
