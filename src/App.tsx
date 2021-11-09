@@ -39,6 +39,9 @@ export const App = () => {
     const handleAddTagTask = (taskId: string, tag: string) => {
         setTasks(tasks.map((i) => i.id === taskId ? {...i, tag} : i))
     }
+    const handleTagDelete = (tag: string) => {
+        setTags(tags.filter(i => i !== tag))
+    }
 
     return <div className={`container`}>
         <AddItemForm
@@ -47,6 +50,7 @@ export const App = () => {
 
         <Tags
             tags={tags}
+            onTagDelete={handleTagDelete}
         />
 
         <Tasks

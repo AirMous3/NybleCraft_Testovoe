@@ -3,9 +3,11 @@ import {Tag} from "./Tag";
 
 type PropsType = {
     tags: string[]
+    onTagDelete: (tag: string) => void
 }
 export const Tags = ({
                          tags,
+                         onTagDelete,
 
                      }: PropsType) =>
     <div style={{display: 'flex', flexWrap: "wrap"}}>
@@ -15,6 +17,7 @@ export const Tags = ({
                 <Tag
                     key={index}
                     title={i}
+                    onTagDelete={onTagDelete}
                 />
         )}
     </div>
