@@ -24,9 +24,17 @@ export const App = () => {
     const handleAddTask = (title: string) => {
         setTasks([{title, id: v1(), tag: '#all'}, ...tasks])
     }
+    const handleDeleteTask = (taskId: string) => {
+        setTasks(tasks.filter(i => i.id !== taskId))
+    }
     return <div className={`container`}>
-        <AddItemForm onSetAddTask={handleAddTask}/>
-        <Tasks state={tasks}/>
+        <AddItemForm
+            onSetAddTask={handleAddTask}
+        />
+        <Tasks
+            state={tasks}
+            onSetDeleteTask={handleDeleteTask}
+        />
     </div>
 }
 
