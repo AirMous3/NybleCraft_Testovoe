@@ -1,5 +1,6 @@
 import {StateType} from "../../App";
 import {EditableSpan} from "./EditableSpan";
+import s from './Tasks.module.scss'
 
 type PropsType = {
     tasks: StateType[]
@@ -14,12 +15,12 @@ export const Tasks = ({
 
                       }: PropsType) => {
 
-    return <ul>
+    return <ul className={s.container}>
         {
             tasks.map(
                 (i) => {
 
-                    return <li key={i.id} style={{display: 'flex', paddingTop: '10px'}}>
+                    return <li key={i.id} >
 
                         <EditableSpan
                             title={i.title}

@@ -1,0 +1,14 @@
+.container {
+  display: flex;
+  flex-wrap: wrap;
+
+  li {
+    margin-left: 10px;
+    border: 1px solid;
+    padding: 20px;
+    min-width: 200px;
+    display: flex;
+    margin-top: 10px;
+    justify-content: space-between;
+  }
+}

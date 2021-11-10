@@ -1,4 +1,5 @@
 import {ChangeEvent, useState} from "react";
+import s from './AddItemForm.module.scss'
 
 type PropsType = {
     onAddTask: (title: string) => void
@@ -16,7 +17,7 @@ export const AddItemForm = ({onAddTask}: PropsType) => {
         setTitle(e.currentTarget.value)
     }
 
-    return <div>
+    return <div className={s.container}>
         <input
             placeholder='Добавьте Заметку'
             value={title}

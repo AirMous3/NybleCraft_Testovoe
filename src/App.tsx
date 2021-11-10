@@ -1,9 +1,9 @@
 import React, {useEffect, useState} from 'react';
-import './App.css';
 import {v1} from "uuid";
 import {AddItemForm} from "./components/AddItemForm/AddItemForm";
 import {Tasks} from "./components/Tasks/Tasks";
 import {Tags} from "./components/HashTags/Tags";
+import s from './App.module.scss'
 
 
 export type StateType = {
@@ -52,22 +52,27 @@ export const App = () => {
         i.title.split(' ').filter(text => text[0] === '#')).flat()))
 
 
-    return <div className={`container`}>
+    return <div className={s.container}>
         <AddItemForm
             onAddTask={handleAddTask}
         />
 
-        <Tags
-            tags={tags}
-            onTagDelete={handleTagDelete}
-            onTagFilter={handleChangeFilter}
-        />
+        <div className={s.wrapper}>
 
+
+
+            <Tags
+                tags={tags}
+                onTagDelete={handleTagDelete}
+                onTagFilter={handleChangeFilter}
+            />
+        </div>
         <Tasks
             tasks={filteredTasks}
             onDeleteTask={handleDeleteTask}
             onChangeTaskTitle={handleChangeTaskTitle}
         />
+
     </div>
 }
 

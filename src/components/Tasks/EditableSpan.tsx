@@ -49,7 +49,7 @@ export const EditableSpan = ({
                     onKeyPress={onEnterKeyPress}
                 />
 
-                : <span onDoubleClick={handleEditModeChange}>{text}</span>
+                : <span style={{width: '100%'}} onDoubleClick={handleEditModeChange}>{text}</span>
         }
     </div>
 }

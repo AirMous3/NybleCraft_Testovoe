@@ -1,0 +1,29 @@
+.container {
+  input {
+    border: 0;
+    background-color: transparent;
+    border-bottom: 1px solid #313131;
+    outline: none;
+    color: #969593;
+    padding-bottom: 8px;
+    padding-top: 8px;
+  }
+
+  button {
+    margin-left: 20px;
+    padding: 8px 24px;
+    border-radius: 6px;
+    border: none;
+    background-color: #313131;
+    color: #f1f1f1;
+    cursor: pointer;
+
+    &:hover {
+      filter: brightness(80%);
+    }
+
+    &:active {
+      transform: scale(0.95);
+    }
+  }
+}
