@@ -2,6 +2,7 @@ import React from "react";
 import {Tag} from "./Tag";
 import s from './Tags.module.scss'
 
+
 type PropsType = {
     tags: string[]
     onTagDelete: (tag: string) => void
@@ -10,14 +11,13 @@ type PropsType = {
 export const Tags = ({
                          tags,
                          onTagDelete,
-                         onTagFilter
+                         onTagFilter,
 
-                     }: PropsType) =>
-    <div className={s.container}>
-        <div className={s.searchWrapper}>
-            <input placeholder={'Поиск тегов'} type="text"/>
-            <button>Search</button>
-        </div>
+
+                     }: PropsType) => {
+
+    return <div className={s.container}>
+
         <div className={s.wrapper}>
             <div onClick={() => onTagFilter('')} style={{paddingTop: '10px', marginRight: '20px'}}>#all</div>
             {tags.map(
@@ -31,3 +31,4 @@ export const Tags = ({
             )}
         </div>
     </div>
+}

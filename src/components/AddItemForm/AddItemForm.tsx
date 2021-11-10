@@ -18,6 +18,7 @@ export const AddItemForm = ({onAddTask}: PropsType) => {
     }
 
     return <div className={s.container}>
+
         <input
             placeholder='Добавьте Заметку'
             value={title}
@@ -25,6 +26,6 @@ export const AddItemForm = ({onAddTask}: PropsType) => {
             type='text'
         />
 
-        <button onClick={handleAddTask}>add note</button>
+        <button onClick={handleAddTask}>addNote</button>
     </div>
 }

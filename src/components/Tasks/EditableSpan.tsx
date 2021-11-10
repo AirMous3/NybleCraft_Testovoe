@@ -32,7 +32,7 @@ export const EditableSpan = ({
         onChange(taskId, text)
     }
 
-    return <div className={s.container}>
+    return <div onDoubleClick={handleEditModeChange} className={s.container}>
         {
             editMode
                 ? <textarea
@@ -42,7 +42,7 @@ export const EditableSpan = ({
                     onChange={handleTaskTitleChange}
                 />
 
-                : <span onDoubleClick={handleEditModeChange}>{text}</span>
+                : <span>{text}</span>
         }
     </div>
 }

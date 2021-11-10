@@ -30,7 +30,6 @@ export const App = () => {
     const handleChangeTaskTitle = (taskId: string, title: string) => {
         setTasks(tasks.map((i) => i.id === taskId ? {...i, title} : i))
     }
-
     const handleTagDelete = (tag: string) => {
         const newTasks = tasks.map((t) => {
             t.title = t.title.replace(tag, '')
@@ -54,9 +53,11 @@ export const App = () => {
 
     return <div className={s.container}>
         <h1>NoteBook</h1>
-        <AddItemForm
-            onAddTask={handleAddTask}
-        />
+        <div className={s.addItemFormWrapper}>
+            <AddItemForm
+                onAddTask={handleAddTask}
+            />
+        </div>
 
         <div className={s.wrapper}>
             <Tags

@@ -1,6 +1,6 @@
 .container {
   padding-top: 50px;
-
+  display: flex;
   input {
     border: 0;
     background-color: transparent;
@@ -9,6 +9,9 @@
     color: #969593;
     padding-bottom: 8px;
     padding-top: 8px;
+    width: 500px;
+    box-sizing: border-box;
+    padding-left: 20px;
   }
 
   button {
