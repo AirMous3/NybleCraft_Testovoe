@@ -19,7 +19,9 @@ export const Tags = ({
     return <div className={s.container}>
 
         <div className={s.wrapper}>
-            <div onClick={() => onTagFilter('')} style={{paddingTop: '10px', marginRight: '20px'}}>#all</div>
+            <div onClick={() => onTagFilter('')}
+                 style={{paddingTop: '10px', marginRight: '20px', cursor: "pointer"}}>#all
+            </div>
             {tags.map(
                 (i, index) =>
                     <Tag

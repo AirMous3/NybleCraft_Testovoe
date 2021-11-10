@@ -53,11 +53,11 @@ export const App = () => {
 
     return <div className={s.container}>
         <h1>NoteBook</h1>
-        <div className={s.addItemFormWrapper}>
-            <AddItemForm
-                onAddTask={handleAddTask}
-            />
-        </div>
+
+        <AddItemForm
+            onAddTask={handleAddTask}
+        />
+
 
         <div className={s.wrapper}>
             <Tags

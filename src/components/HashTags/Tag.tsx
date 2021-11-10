@@ -10,7 +10,7 @@ export const Tag = ({
                         onTagFilter,
 
                     }: PropsType) => {
-    return <div style={{paddingLeft: '10px', paddingTop: '10px', display: "flex"}}>
+    return <div style={{paddingLeft: '10px', paddingTop: '10px', display: "flex", cursor: "pointer"}}>
         <div onClick={() => onTagFilter(title)}>
             {title}
         </div>
