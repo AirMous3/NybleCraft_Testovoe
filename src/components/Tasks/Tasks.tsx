@@ -15,6 +15,7 @@ export const Tasks = ({
 
                       }: PropsType) => {
 
+
     return <ul className={s.container}>
         {
             tasks.map(
@@ -29,7 +30,7 @@ export const Tasks = ({
 
                         />
 
-                        <button onClick={() => onDeleteTask(i.id)}> x</button>
+                        <button onClick={() => onDeleteTask(i.id)}>delete</button>
                     </li>
                 })
         }

@@ -1,4 +1,5 @@
 import {ChangeEvent, useEffect, useState} from "react";
+import s from './EditableSpan.module.scss'
 
 type PropsType = {
     title: string
@@ -19,7 +20,7 @@ export const EditableSpan = ({
         setText(title)
     }, [title])
 
-    const handleTaskTitleChange = (e: ChangeEvent<HTMLInputElement>) => {
+    const handleTaskTitleChange = (e: ChangeEvent<HTMLTextAreaElement>) => {
         setText(e.currentTarget.value)
     }
     const handleEditModeChange = () => {
@@ -31,25 +32,17 @@ export const EditableSpan = ({
         onChange(taskId, text)
     }
 
-    const onEnterKeyPress = (e: React.KeyboardEvent<HTMLInputElement>) => {
-        if (e.key === 'Enter') {
-            disableEditMode()
-        }
-    }
-
-    return <div>
+    return <div className={s.container}>
         {
             editMode
-                ? <input
+                ? <textarea
                     value={text}
                     autoFocus={true}
                     onBlur={disableEditMode}
-                    type='text'
                     onChange={handleTaskTitleChange}
-                    onKeyPress={onEnterKeyPress}
                 />
 
-                : <span style={{width: '100%'}} onDoubleClick={handleEditModeChange}>{text}</span>
+                : <span onDoubleClick={handleEditModeChange}>{text}</span>
         }
     </div>
 }

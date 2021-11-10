@@ -14,9 +14,12 @@ export const Tags = ({
 
                      }: PropsType) =>
     <div className={s.container}>
-        <input placeholder={'Поиск тегов'} type="text"/>
+        <div className={s.searchWrapper}>
+            <input placeholder={'Поиск тегов'} type="text"/>
+            <button>Search</button>
+        </div>
         <div className={s.wrapper}>
-            <div onClick={() => onTagFilter('')} style={{paddingTop: '10px'}}>#all</div>
+            <div onClick={() => onTagFilter('')} style={{paddingTop: '10px', marginRight: '20px'}}>#all</div>
             {tags.map(
                 (i, index) =>
                     <Tag

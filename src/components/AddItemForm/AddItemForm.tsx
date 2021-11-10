@@ -25,6 +25,6 @@ export const AddItemForm = ({onAddTask}: PropsType) => {
             type='text'
         />
 
-        <button onClick={handleAddTask}>addTask</button>
+        <button onClick={handleAddTask}>add note</button>
     </div>
 }
