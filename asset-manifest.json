@@ -1,0 +1,20 @@
+{
+  "files": {
+    "main.css": "/NybleCraft_Testovoe/static/css/main.73364b33.chunk.css",
+    "main.js": "/NybleCraft_Testovoe/static/js/main.6d941b20.chunk.js",
+    "main.js.map": "/NybleCraft_Testovoe/static/js/main.6d941b20.chunk.js.map",
+    "runtime-main.js": "/NybleCraft_Testovoe/static/js/runtime-main.9de468e4.js",
+    "runtime-main.js.map": "/NybleCraft_Testovoe/static/js/runtime-main.9de468e4.js.map",
+    "static/js/2.fb150c03.chunk.js": "/NybleCraft_Testovoe/static/js/2.fb150c03.chunk.js",
+    "static/js/2.fb150c03.chunk.js.map": "/NybleCraft_Testovoe/static/js/2.fb150c03.chunk.js.map",
+    "index.html": "/NybleCraft_Testovoe/index.html",
+    "static/css/main.73364b33.chunk.css.map": "/NybleCraft_Testovoe/static/css/main.73364b33.chunk.css.map",
+    "static/js/2.fb150c03.chunk.js.LICENSE.txt": "/NybleCraft_Testovoe/static/js/2.fb150c03.chunk.js.LICENSE.txt"
+  },
+  "entrypoints": [
+    "static/js/runtime-main.9de468e4.js",
+    "static/js/2.fb150c03.chunk.js",
+    "static/css/main.73364b33.chunk.css",
+    "static/js/main.6d941b20.chunk.js"
+  ]
+}
