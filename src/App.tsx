@@ -14,7 +14,7 @@ export type StateType = {
 
 export const App = () => {
 
-    const [tasks, setTasks] = useState<StateType[]>(JSON.parse(localStorage.getItem('tasks')!))
+    const [tasks, setTasks] = useState<StateType[]>(JSON.parse(localStorage.getItem('tasks')!) || [])
     const [filter, setFilter] = useState('')
 
     useEffect(() => {
