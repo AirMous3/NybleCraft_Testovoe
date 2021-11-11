@@ -61,6 +61,7 @@ export const App = () => {
 
         <div className={s.wrapper}>
             <Tags
+                filter={filter}
                 tags={tags}
                 onTagDelete={handleTagDelete}
                 onTagFilter={handleChangeFilter}

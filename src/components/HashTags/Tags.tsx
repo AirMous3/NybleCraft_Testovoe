@@ -7,11 +7,13 @@ type PropsType = {
     tags: string[]
     onTagDelete: (tag: string) => void
     onTagFilter: (tag: string) => void
+    filter: string
 }
 export const Tags = ({
                          tags,
                          onTagDelete,
                          onTagFilter,
+                         filter
 
 
                      }: PropsType) => {
@@ -25,6 +27,7 @@ export const Tags = ({
             {tags.map(
                 (i, index) =>
                     <Tag
+                        filter={filter}
                         key={index}
                         title={i}
                         onTagDelete={onTagDelete}
