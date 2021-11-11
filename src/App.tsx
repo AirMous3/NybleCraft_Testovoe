@@ -63,8 +63,8 @@ export const App = () => {
             <Tags
                 filter={filter}
                 tags={tags}
-                onTagDelete={handleTagDelete}
-                onTagFilter={handleChangeFilter}
+                onRemoveFilter={handleTagDelete}
+                onSelectFilter={handleChangeFilter}
             />
         </div>
         <Tasks

@@ -42,3 +42,18 @@
   padding: 20px;
 
 }
+
+.tag {
+  margin-top: 10px;
+  margin-right: 20px;
+  cursor: pointer;
+}
+.tagWrapper{
+  margin-left: 10px;
+  margin-top: 10px;
+  display: flex;
+  cursor: pointer;
+}
+.activeTag {
+  color: yellow;
+}
